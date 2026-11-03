@@ -1,0 +1,692 @@
+/* =========================================================
+   株式会社 沖空電 — corporate top page
+   ========================================================= */
+
+:root{
+  --navy:        #0b3b7f;
+  --navy-deep:   #06265a;
+  --navy-darker: #041d47;
+  --navy-footer: #062145;
+  --yellow:      #ffd900;
+  --cyan:        #7fd4f5;
+  --card-panel:  #092a5c;   /* solid end of the service-card text panel */
+  --ink:         #15223d;
+  --ink-sub:     #5b6b85;
+  --line:        #e2e8f0;
+  --gray-bg:     #f4f7fa;
+
+  --radius-card: 10px;
+  --radius-img:  8px;
+  --radius-chip: 4px;
+  --radius-pill: 999px;
+
+  --container: 1200px;
+  --header-h: 90px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+
+/* sections below "サービス" are parked — remove the `hidden` attribute in
+   index.html to bring each one back */
+[hidden]{display:none !important;}
+
+html{
+  scroll-behavior:smooth;
+  /* backstop against stray horizontal scroll; `clip` rather than `hidden`
+     so it doesn't become a scroll container and break the sticky header */
+  overflow-x:clip;
+}
+
+/* grid/flex items default to min-width:auto, so a long unbreakable run of
+   CJK text can force a track wider than its 1fr share and push the page out */
+.grid > *,
+.reasons__grid > *,
+.news__layout > *,
+.footer__top > *,
+.footer__nav > *,
+.header__inner > *,
+.cta__inner > *,
+.nlist a > *{min-width:0;}
+
+body{
+  margin:0;
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  font-size:16px;
+  line-height:1.8;
+  color:var(--ink);
+  background:#fff;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;margin:0;padding:0;}
+h1,h2,h3,p{margin:0;}
+button{font:inherit;}
+
+.sprite{position:absolute;width:0;height:0;overflow:hidden;}
+svg{width:1em;height:1em;fill:none;}
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:24px;
+}
+
+/* ---------- wireframe image placeholder ---------- */
+.ph{
+  position:relative;
+  background:#dfe5ec;
+  background-image:
+    linear-gradient(to top right, transparent calc(50% - 1px), #b7c2d0 50%, transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), #b7c2d0 50%, transparent calc(50% + 1px));
+  border:1px solid #b7c2d0;
+  overflow:hidden;
+}
+.ph::after{
+  content:attr(data-ph);
+  position:absolute;
+  inset:50% 0 auto 0;
+  transform:translateY(-50%);
+  text-align:center;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  color:#75839a;
+  background:#dfe5ec;
+  padding:4px 0;
+  pointer-events:none;
+}
+
+/* ---------- logo ---------- */
+.logo{display:flex;align-items:center;gap:16px;}
+.logo__mark{height:54px;width:auto;flex:none;}
+.logo__text{
+  font-size:34px;font-weight:900;letter-spacing:.04em;color:#111;line-height:1;
+  white-space:nowrap;
+}
+.logo__text small{font-size:20px;font-weight:700;letter-spacing:.02em;}
+
+.logo--hero .logo__text{color:#fff;}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header{
+  position:sticky;top:0;z-index:50;
+  background:#fff;
+  box-shadow:0 1px 0 rgba(21,34,61,.08);
+}
+.header__inner{
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:24px;
+  height:var(--header-h);
+  display:flex;align-items:center;gap:26px;
+}
+.header .logo{flex:none;}   /* the nav gives way before the brand does */
+.gnav{margin-left:auto;}
+.gnav ul{display:flex;align-items:center;gap:20px;}
+.gnav a{
+  font-size:14px;font-weight:700;color:var(--ink);
+  transition:color .2s;
+}
+.gnav a:hover{color:var(--navy);}
+
+/* Solid yellow block, full header height, flush to the viewport's right edge.
+   `margin-right:calc(50% - 50vw)` is the gap from the container's content box
+   out to the viewport, so the block escapes the container while the logo on
+   the left stays aligned with the rest of the page. */
+.header__tel{
+  align-self:stretch;
+  display:flex;align-items:center;gap:12px;
+  /* 100vw counts the scrollbar, so the block overshoots the edge by ~15px on
+     Windows; the extra inline padding keeps the number optically inset */
+  padding-inline:28px;
+  margin-right:calc(50% - 50vw);
+  background:var(--yellow);
+  color:#111;
+}
+.header__tel-ico{width:36px;height:36px;flex:none;color:#111;}
+.header__tel-txt{display:flex;flex-direction:column;line-height:1.15;}
+.header__tel-txt strong{font-size:26px;font-weight:700;color:#111;letter-spacing:.01em;}
+.header__tel-txt small{font-size:12px;font-weight:500;color:#111;letter-spacing:.02em;}
+
+.burger{
+  display:none;width:34px;height:34px;border:0;background:none;padding:0;
+  flex-direction:column;justify-content:center;gap:5px;cursor:pointer;
+}
+.burger span{display:block;height:2px;background:var(--navy);border-radius:2px;}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{
+  position:relative;
+  /* exactly the artwork's native 1780:883 — no min/max clamp, or the image
+     would have to crop to satisfy it */
+  aspect-ratio:1780/883;
+  display:flex;align-items:center;
+  overflow:hidden;
+  color:#fff;
+  background:#06265a;   /* fills any sub-pixel letterbox edge */
+}
+/* hero-bg.png already contains the navy wedge, the yellow diagonal and the
+   handwritten「つなぐ、支える、沖縄の未来。」lettering — don't redraw them.
+   `contain` guarantees no crop even if the artwork's ratio changes later. */
+.hero__media{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:contain;object-position:center;
+}
+.hero__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(100deg, rgba(4,28,72,.55) 0%, rgba(6,38,92,.30) 38%, rgba(8,48,110,.05) 58%, transparent 72%);
+}
+.hero__inner{
+  position:relative;z-index:2;
+  padding-block:60px;
+}
+.hero__copy{max-width:640px;}
+/* identical sizing to the header lockup — only the colours differ, which is
+   why there are no font-size/height overrides here */
+.logo--hero{margin-bottom:26px;}
+
+.hero__title{
+  font-size:52px;
+  font-weight:700;
+  line-height:1.42;
+  letter-spacing:.02em;
+  text-shadow:0 2px 14px rgba(0,20,50,.35);
+}
+.hero__lead{
+  margin-top:22px;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.9;
+  text-shadow:0 1px 10px rgba(0,20,50,.4);
+}
+.hero__btns{
+  margin-top:34px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.hero__btns .btn{border-radius:6px;}   /* squarer than the pill default */
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  border-radius:var(--radius-pill);
+  font-weight:700;
+  line-height:1.3;
+  transition:.22s ease;
+  white-space:nowrap;
+}
+.btn__chev{width:12px;height:12px;flex:none;}
+.btn__ico{width:17px;height:17px;flex:none;}
+
+.btn--yellow{
+  background:var(--yellow);color:var(--navy);
+  font-size:16px;
+  padding:17px 30px;
+  box-shadow:0 6px 18px rgba(0,22,60,.22);
+}
+.btn--yellow .btn__chev{margin-left:14px;}
+.btn--yellow:hover{background:#ffe54d;}
+
+.btn--ghost{
+  background:rgba(6,30,70,.55);
+  border:1px solid rgba(255,255,255,.55);
+  color:#fff;
+  font-size:16px;
+  padding:16px 28px;
+  backdrop-filter:blur(2px);
+}
+.btn--ghost:hover{background:rgba(6,30,70,.8);}
+
+.btn--outline{
+  border:1px solid rgba(255,255,255,.55);
+  color:#fff;
+  font-size:14px;
+  font-weight:500;
+  padding:13px 34px;
+}
+.btn--outline .btn__chev{margin-left:10px;}
+.btn--outline:hover{background:rgba(255,255,255,.12);}
+
+.btn--outline-dark{
+  border-color:#c8d3e0;
+  color:var(--navy);
+  font-size:13px;
+  padding:11px 24px;
+}
+.btn--outline-dark:hover{background:#eef3f9;}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+.sec-title{
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  font-size:32px;
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.06em;
+  color:var(--ink);
+  text-align:center;
+}
+.sec-title::before,
+.sec-title::after{
+  content:"";display:block;width:40px;height:3px;background:var(--yellow);border-radius:2px;
+}
+.sec-title--light{color:#fff;}
+
+.sec-lead{
+  margin-top:14px;
+  text-align:center;
+  font-size:14px;
+  font-weight:400;
+  color:var(--ink-sub);
+}
+.sec-lead--light{color:rgba(255,255,255,.8);}
+
+/* ---------- shared grid ---------- */
+.grid{display:grid;gap:24px;}
+.grid--4{grid-template-columns:repeat(4,1fr);}
+
+.arrow-circle{
+  width:30px;height:30px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.5);
+  color:#fff;
+  display:grid;place-items:center;
+  flex:none;
+  transition:.22s ease;
+}
+.arrow-circle svg{width:14px;height:14px;}
+.arrow-circle--dark{border-color:#c8d3e0;color:var(--navy);}
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+.services{
+  padding:46px 0 50px;
+  background:linear-gradient(180deg,#0c3f85 0%,#0a3271 55%,#072a60 100%);
+}
+.services .grid{margin-top:26px;}
+
+.scard{
+  display:flex;flex-direction:column;
+  padding:0;                       /* image runs edge to edge */
+  border-radius:var(--radius-card);
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.2);
+  overflow:hidden;                 /* clips the image to the card radius */
+  color:#fff;
+  transition:.25s ease;
+}
+/* the panel covers the card background, so hover reads on the border + lift */
+.scard:hover{border-color:rgba(255,255,255,.5);transform:translateY(-4px);}
+/* no aspect-ratio / object-fit here: the img keeps its native 3:2 */
+.scard__img{display:block;}
+.scard__img img{width:100%;height:auto;}
+
+/* The panel rides up over the bottom of the photo and fades in from fully
+   transparent to solid, so the two meet as a gradient rather than a seam. */
+.scard__body{
+  position:relative;
+  display:flex;flex-direction:column;
+  flex:1 1 auto;                   /* fill the stretched card height */
+  margin-top:-56px;
+  padding:56px 16px 16px;
+  background:linear-gradient(180deg,
+    rgba(9,42,92,0)    0,
+    rgba(9,42,92,.45) 20px,
+    rgba(9,42,92,.82) 38px,
+    var(--card-panel) 56px,
+    var(--card-panel) 100%);
+}
+.scard__head{
+  display:flex;align-items:center;gap:10px;
+  font-size:20px;font-weight:700;letter-spacing:.03em;
+}
+.scard__ico{width:50px;height:auto;flex:none;}   /* ≈2.5× the 20px title */
+.is-yellow{color:var(--yellow);}
+.is-cyan{color:var(--cyan);}
+
+.scard__desc{
+  display:block;
+  margin:10px 0 16px;
+  font-size:13px;
+  line-height:1.75;
+  color:rgba(255,255,255,.78);
+}
+/* bare glyph — no ring, no fill (the works cards keep .arrow-circle) */
+.scard__arrow{
+  display:block;
+  width:24px;height:24px;
+  margin:auto 0 0 auto;            /* pinned bottom-right across uneven cards */
+  color:#fff;
+  transition:.22s ease;
+}
+.scard:hover .scard__arrow{color:var(--yellow);transform:translateX(3px);}
+
+/* =========================================================
+   REASONS
+   ========================================================= */
+.reasons{
+  position:relative;
+  padding:66px 0 70px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#bfe6f7 0%,#e8f6fd 60%,#d6eefb 100%);
+}
+.reasons__media{
+  position:absolute;inset:0;border:0;opacity:.32;
+}
+.reasons .container{position:relative;z-index:2;}
+.reasons__grid{
+  margin-top:40px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+.rcard{
+  padding:8px 34px;
+  text-align:center;
+  border-left:1px solid rgba(11,59,127,.18);
+}
+.rcard:first-child{border-left:0;}
+.rcard__ico{width:46px;height:46px;color:var(--navy);}
+.rcard__title{
+  margin-top:14px;
+  font-size:24px;font-weight:700;letter-spacing:.04em;color:var(--ink);
+}
+.rcard__desc{
+  margin-top:12px;
+  font-size:13px;line-height:1.95;color:#36496a;
+}
+
+/* =========================================================
+   WORKS
+   ========================================================= */
+.works{
+  padding:64px 0 70px;
+  background:linear-gradient(180deg,#0a3573 0%,#06265a 60%,#0a3573 100%);
+}
+.works .grid{margin-top:32px;}
+
+.wcard{
+  display:flex;flex-direction:column;
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  background:#fff;
+  transition:.25s ease;
+}
+.wcard:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,15,45,.3);}
+.wcard__img{
+  position:relative;display:block;
+  aspect-ratio:16/10;
+  border:0;border-radius:0;
+}
+.wcard__img::before{
+  content:"";position:absolute;inset:auto 0 0 0;height:60%;z-index:1;
+  background:linear-gradient(180deg,rgba(4,24,60,0) 0%,rgba(4,24,60,.82) 100%);
+}
+.wcard__tag{
+  position:absolute;z-index:2;left:14px;bottom:12px;
+  display:flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:700;color:#fff;letter-spacing:.03em;
+}
+.wcard__tag svg{width:17px;height:17px;flex:none;}
+.wcard__body{
+  display:flex;flex-direction:column;
+  padding:14px 16px 14px;
+}
+.wcard__area{font-size:12px;color:var(--ink-sub);line-height:1.8;}
+.wcard__name{font-size:13px;font-weight:700;color:var(--ink);line-height:1.7;}
+.wcard .arrow-circle{margin:10px 0 0 auto;}
+.wcard:hover .arrow-circle{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+.works__more{margin-top:34px;text-align:center;}
+
+/* =========================================================
+   NEWS
+   ========================================================= */
+.news{
+  padding:40px 0 44px;
+  background:var(--gray-bg);
+}
+.news__layout{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:46px;
+  align-items:start;
+}
+.news__visual{
+  aspect-ratio:3/2;
+  border-radius:var(--radius-img);
+}
+.news__lead{font-size:14px;color:var(--ink-sub);}
+
+.nlist{margin-top:10px;border-top:1px solid var(--line);}
+.nlist li{border-bottom:1px solid var(--line);}
+.nlist a{
+  display:flex;align-items:center;gap:18px;
+  padding:10px 4px;
+  transition:.2s ease;
+}
+.nlist a:hover{background:rgba(11,59,127,.04);}
+.nlist time{font-size:13px;color:var(--ink-sub);flex:none;letter-spacing:.02em;}
+.badge{
+  flex:none;
+  min-width:64px;
+  text-align:center;
+  padding:3px 10px;
+  border-radius:var(--radius-chip);
+  font-size:11px;font-weight:700;color:#fff;line-height:1.6;
+}
+.badge--green{background:#3bb77e;}
+.badge--blue{background:#2563c9;}
+.nlist__title{font-size:14px;color:var(--ink);line-height:1.6;}
+.nlist__arrow{width:16px;height:16px;margin-left:auto;color:var(--ink-sub);flex:none;}
+.nlist a:hover .nlist__arrow{color:var(--navy);}
+
+.news__more{margin-top:14px;text-align:right;}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+.cta{position:relative;padding:62px 0 66px;overflow:hidden;color:#fff;}
+.cta__media{position:absolute;inset:0;border:0;}
+.cta__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(95deg,rgba(5,30,72,.88) 0%,rgba(7,40,92,.74) 55%,rgba(9,52,118,.55) 100%);
+}
+.cta__inner{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
+}
+.cta__title{
+  font-size:30px;font-weight:700;line-height:1.5;letter-spacing:.04em;
+  text-shadow:0 2px 12px rgba(0,20,50,.35);
+}
+.cta__note{margin-top:14px;font-size:13px;color:rgba(255,255,255,.88);}
+.cta__btns{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+
+.btn--tel{padding:12px 30px;}
+.btn--tel span{display:flex;flex-direction:column;align-items:center;line-height:1.25;}
+.btn--tel strong{font-size:22px;font-weight:700;letter-spacing:.01em;}
+.btn--tel small{font-size:10px;font-weight:500;letter-spacing:.02em;}
+.btn--tel .btn__ico{width:20px;height:20px;}
+.btn--mail{font-size:14px;font-weight:500;padding:21px 26px;}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer{background:var(--navy-footer);color:#fff;}
+.footer__top{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:40px;
+  padding-top:80px;
+  padding-bottom:96px;
+}
+.footer__brand .logo--hero{margin-bottom:20px;}
+.footer__brand .logo__text{font-size:20px;}
+.footer__brand .logo__text small{font-size:12px;}
+.footer__brand .logo__mark{height:28px;}
+
+.footer__info li{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:12px;line-height:2.3;color:rgba(255,255,255,.78);
+}
+.footer__info svg{width:14px;height:14px;margin-top:7px;color:var(--yellow);flex:none;}
+
+.footer__nav{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:24px;
+}
+.fcol h3{
+  font-size:13px;font-weight:700;letter-spacing:.04em;color:#fff;
+  margin-bottom:14px;
+}
+.fcol a{
+  font-size:12px;line-height:2.4;color:rgba(255,255,255,.7);
+  transition:color .2s;
+}
+.fcol a:hover{color:var(--yellow);}
+
+.footer__bottom{border-top:1px solid rgba(255,255,255,.14);}
+.footer__bottom-inner{
+  display:flex;align-items:center;gap:24px;
+  padding-block:20px;
+}
+.copy{font-size:11px;color:rgba(255,255,255,.6);}
+.footer__sub{display:flex;gap:22px;margin-left:auto;}
+.footer__sub a{font-size:11px;color:rgba(255,255,255,.7);}
+.footer__sub a:hover{color:var(--yellow);}
+.totop{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.35);
+  display:grid;place-items:center;
+  color:#fff;flex:none;
+  transition:.2s ease;
+}
+.totop svg{width:14px;height:14px;}
+.totop:hover{background:var(--yellow);border-color:var(--yellow);color:var(--navy);}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+/* The enlarged lockup (~373px) plus nav plus the phone block needs ~1140px,
+   so the bar has to start giving way well before the tablet breakpoint. */
+@media (max-width:1200px){
+  .logo__mark{height:46px;}
+  .logo__text{font-size:29px;}
+  .logo__text small{font-size:17px;}
+  .header__inner{gap:20px;}
+  .gnav ul{gap:16px;}
+  .gnav a{font-size:13px;}
+  .header__tel{padding-inline:22px;gap:10px;}
+  .header__tel-ico{width:30px;height:30px;}
+  .header__tel-txt strong{font-size:22px;}
+  .header__tel-txt small{font-size:11px;}
+
+  /* icon + title would outgrow a 4-up column below this; the 2.5× ratio holds */
+  .scard__head{font-size:18px;}
+  .scard__ico{width:45px;}
+}
+
+@media (max-width:1100px){
+  /* hero height shrinks with the fixed ratio, so the copy has to shrink too
+     or it would outgrow the image before the stacked layout kicks in */
+  .hero__title{font-size:42px;}
+  .hero__inner{padding-block:32px;}
+  .sec-title{font-size:27px;}
+  .rcard{padding:8px 20px;}
+}
+
+@media (max-width:1024px){
+  .gnav{display:none;}
+  /* burger sits left of the yellow block so the block keeps the right edge */
+  .burger{display:flex;margin-left:auto;order:2;}
+  .header__tel{order:3;}
+
+  /* 4-up columns get too narrow for the enlarged icon + title */
+  .grid--4{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width:900px){
+  :root{--header-h:72px;}
+  .header__tel-ico{width:22px;height:22px;}
+  .header__tel-txt strong{font-size:19px;}
+  .header__tel-txt small{font-size:10px;}
+  .logo__mark{height:40px;}
+  .logo__text{font-size:25px;}
+  .logo__text small{font-size:15px;}
+
+  /* below this the image is too short to host the copy, so stack instead of
+     overlaying — the image still renders at its full native ratio */
+  .hero{aspect-ratio:auto;display:block;background:linear-gradient(160deg,#0b3b7f,#06265a);}
+  .hero__media{position:static;width:100%;height:auto;}
+  .hero__scrim{display:none;}
+  .hero__inner{padding-block:36px;}
+  .hero__title{font-size:34px;}
+  .hero__lead{font-size:15px;}
+
+  .reasons__grid{grid-template-columns:1fr;gap:28px;}
+  .rcard{border-left:0;padding:0;}
+
+  .news__layout{grid-template-columns:1fr;gap:28px;}
+  .news__visual{max-width:420px;}
+
+  .cta__inner{flex-direction:column;align-items:flex-start;}
+
+  .footer__top{grid-template-columns:1fr;}
+  .footer__nav{grid-template-columns:repeat(3,1fr);row-gap:28px;}
+}
+
+@media (max-width:600px){
+  body{font-size:15px;}
+  .container,.header__inner{padding-inline:18px;}
+
+  /* at 375px the brand + number + burger can't all fit, so the yellow block
+     keeps only its (still tappable) phone icon — the number stays in the hero
+     CTA directly below */
+  :root{--header-h:60px;}
+  .header__inner{gap:12px;}
+  .logo{gap:9px;}
+  .logo__mark{height:30px;}
+  .logo__text{font-size:18px;}
+  .logo__text small{font-size:11px;}
+  .header__tel{padding-inline:16px;}
+  .header__tel-txt{display:none;}
+
+  .hero__title{font-size:27px;line-height:1.5;}
+  .hero__lead{font-size:14px;}
+  .hero__btns{flex-direction:column;align-items:stretch;gap:12px;}
+  .btn--yellow,.btn--ghost{width:100%;font-size:15px;padding:15px 22px;}
+
+  .sec-title{font-size:22px;gap:12px;}
+  .sec-title::before,.sec-title::after{width:26px;height:2px;}
+  .sec-lead{font-size:13px;}
+
+  .services,.works{padding:56px 0 60px;}
+  .reasons,.news{padding:52px 0 56px;}
+  .cta{padding:46px 0 50px;}
+
+  .grid--4{grid-template-columns:1fr;gap:18px;}
+
+  .rcard__title{font-size:19px;}
+  .cta__title{font-size:22px;}
+  .cta__btns{width:100%;flex-direction:column;align-items:stretch;}
+  .btn--tel,.btn--mail{width:100%;}
+
+  .nlist a{flex-wrap:wrap;gap:10px;padding:14px 2px;}
+  .nlist__title{width:100%;order:3;}
+  .nlist__arrow{order:2;}
+  .news__more{text-align:center;}
+
+  .footer__nav{grid-template-columns:repeat(2,1fr);}
+  .footer__bottom-inner{flex-wrap:wrap;gap:12px;}
+  .footer__sub{margin-left:0;width:100%;order:3;}
+  .totop{margin-left:auto;}
+}

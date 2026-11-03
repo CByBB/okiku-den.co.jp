@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社 沖空電 | 沖縄の電気工事・空調設備工事</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== SVG icon sprite ===== -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="1.8" d="M3 6.5h18v11H3z"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.8" d="m3.6 7 8.4 6 8.4-6"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-5.5-5.5L19.5 12 13.5 17.5"/>
+  </symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/>
+  </symbol>
+  <symbol id="i-up" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 15 7-7 7 7"/>
+  </symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M13.5 2 4 14h6l-1.5 8L19 9.5h-6.3L13.5 2z"/>
+  </symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <path d="M12 2v20M3.4 7l17.2 10M20.6 7 3.4 17"/>
+      <path d="M9.2 4.2 12 6.9l2.8-2.7M9.2 19.8 12 17.1l2.8 2.7"/>
+      <path d="M4.3 11 5.4 7.2 1.6 6.2M19.7 13l-1.1 3.8 3.8 1"/>
+      <path d="M1.6 17.8 5.4 16.8 4.3 13M22.4 6.2 18.6 7.2 19.7 11"/>
+    </g>
+  </symbol>
+  <symbol id="i-building" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M3 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v6h6a1 1 0 0 1 1 1v10H3zm3-14h2v2H6V7zm0 4h2v2H6v-2zm0 4h2v2H6v-2zm4-8h2v2h-2V7zm0 4h2v2h-2v-2zm0 4h2v2h-2v-2zm6-3h3v2h-3v-2zm0 4h3v2h-3v-2z"/>
+  </symbol>
+  <symbol id="i-home" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 3 2.5 11h2.6v9h5v-5.4h3.8V20h5v-9h2.6L12 3z"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2C7.9 2 4.5 5.4 4.5 9.5 4.5 15.1 12 22 12 22s7.5-6.9 7.5-12.5C19.5 5.4 16.1 2 12 2z"/>
+    <circle cx="12" cy="9.4" r="2.9" fill="#fff"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2 3.5 5.5v6.1c0 5.2 3.6 10 8.5 11.4 4.9-1.4 8.5-6.2 8.5-11.4V5.5L12 2z"/>
+    <path fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m8 12 2.8 2.8L16.3 9.3"/>
+  </symbol>
+  <symbol id="i-fast" viewBox="0 0 24 24">
+    <circle cx="14" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M14 8.6V13l3 1.8M11 3h6"/>
+    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M1.5 9h5M.5 13h4M2.5 17h4"/>
+  </symbol>
+  <symbol id="i-mappin-s" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2C8.4 2 5.5 4.9 5.5 8.5 5.5 13.4 12 21 12 21s6.5-7.6 6.5-12.5C18.5 4.9 15.6 2 12 2zm0 9a2.6 2.6 0 1 1 0-5.2A2.6 2.6 0 0 1 12 11z"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 6.8V12l3.4 2"/>
+  </symbol>
+</svg>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header__inner">
+    <a class="logo" href="#">
+      <img class="logo__mark" src="okinawa_web_assets/Logo-dark.png" alt="OKD" width="2206" height="713">
+      <span class="logo__text"><small>株式会社</small> 沖空電</span>
+    </a>
+
+    <nav class="gnav">
+      <ul>
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#works">施工事例</a></li>
+        <li><a href="#reasons">選ばれる理由</a></li>
+        <li><a href="#company">会社案内</a></li>
+        <li><a href="#contact">お問合せ</a></li>
+      </ul>
+    </nav>
+
+    <a class="header__tel" href="tel:0989889953" aria-label="電話 098-988-9953">
+      <svg class="header__tel-ico"><use href="#i-phone"/></svg>
+      <span class="header__tel-txt">
+        <strong>098-988-9953</strong>
+        <small>受付時間 8:00〜17:00</small>
+      </span>
+    </a>
+
+    <button class="burger" type="button" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img class="hero__media" src="okinawa_web_assets/hero-bg.png" alt="" width="1780" height="883">
+  <div class="hero__scrim"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <div class="logo logo--hero">
+        <img class="logo__mark" src="okinawa_web_assets/Logo-light.png" alt="OKD" width="2172" height="724">
+        <span class="logo__text"><small>株式会社</small> 沖空電</span>
+      </div>
+
+      <h1 class="hero__title">沖縄の暮らしを、<br>電気と空調で支える。</h1>
+
+      <p class="hero__lead">
+        電気工事・空調設備の設計から施工、メンテナンスまで。<br>
+        快適な空間づくりを、私たちがサポートします。
+      </p>
+
+      <div class="hero__btns">
+        <a class="btn btn--yellow" href="#contact">無料見積もり・相談する <svg class="btn__chev"><use href="#i-chev"/></svg></a>
+        <a class="btn btn--ghost" href="tel:0989889953"><svg class="btn__ico"><use href="#i-phone"/></svg> 098-988-9953</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="container">
+    <h2 class="sec-title sec-title--light">沖空電のサービス</h2>
+    <p class="sec-lead sec-lead--light">電気と空調のプロフェッショナルが、安心・安全な施工を提供します。</p>
+
+    <div class="grid grid--4">
+      <a class="scard" href="#">
+        <span class="scard__img"><img src="okinawa_web_assets/service1.png" alt="電気設備工事" width="1536" height="1024" loading="lazy"></span>
+        <span class="scard__body">
+          <span class="scard__head"><img class="scard__ico" src="okinawa_web_assets/service-icon-1.png" alt="" width="470" height="470">電気設備工事</span>
+          <span class="scard__desc">住宅・店舗・施設などの<br>電気設備工事を行います。</span>
+          <svg class="scard__arrow"><use href="#i-arrow"/></svg>
+        </span>
+      </a>
+      <a class="scard" href="#">
+        <span class="scard__img"><img src="okinawa_web_assets/service2.png" alt="空調設備工事" width="1536" height="1024" loading="lazy"></span>
+        <span class="scard__body">
+          <span class="scard__head"><img class="scard__ico" src="okinawa_web_assets/service-icon-2.png" alt="" width="470" height="470">空調設備工事</span>
+          <span class="scard__desc">快適な空間をつくる<br>空調設備の設計・施工を<br>行います。</span>
+          <svg class="scard__arrow"><use href="#i-arrow"/></svg>
+        </span>
+      </a>
+      <a class="scard" href="#">
+        <span class="scard__img"><img src="okinawa_web_assets/service3.png" alt="法人・店舗向け" width="1536" height="1024" loading="lazy"></span>
+        <span class="scard__body">
+          <span class="scard__head"><img class="scard__ico" src="okinawa_web_assets/service-icon-3.png" alt="" width="470" height="470">法人・店舗向け</span>
+          <span class="scard__desc">オフィス・店舗などの<br>電気・空調設備をトータルで<br>サポートします。</span>
+          <svg class="scard__arrow"><use href="#i-arrow"/></svg>
+        </span>
+      </a>
+      <a class="scard" href="#">
+        <span class="scard__img"><img src="okinawa_web_assets/service4.png" alt="住宅向け工事" width="1536" height="1024" loading="lazy"></span>
+        <span class="scard__body">
+          <span class="scard__head"><img class="scard__ico" src="okinawa_web_assets/service-icon-4.png" alt="" width="470" height="470">住宅向け工事</span>
+          <span class="scard__desc">一般住宅の電気・空調工事で<br>快適な住まいを実現します。</span>
+          <svg class="scard__arrow"><use href="#i-arrow"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REASONS ===== -->
+<section class="reasons" id="reasons" hidden>
+  <div class="reasons__media ph" data-ph="BACKGROUND IMAGE"></div>
+  <div class="container">
+    <h2 class="sec-title">沖空電が選ばれる理由</h2>
+
+    <div class="reasons__grid">
+      <div class="rcard">
+        <svg class="rcard__ico"><use href="#i-pin"/></svg>
+        <h3 class="rcard__title">地域密着の対応</h3>
+        <p class="rcard__desc">沖縄の気候や地域特性を理解した<br>迅速で丁寧な対応を心がけています。</p>
+      </div>
+      <div class="rcard">
+        <svg class="rcard__ico"><use href="#i-shield"/></svg>
+        <h3 class="rcard__title">確かな技術と安全</h3>
+        <p class="rcard__desc">経験豊富な技術者による<br>高品質な施工と徹底した安全管理。</p>
+      </div>
+      <div class="rcard">
+        <svg class="rcard__ico"><use href="#i-fast"/></svg>
+        <h3 class="rcard__title">迅速・柔軟な対応</h3>
+        <p class="rcard__desc">急なトラブルやご相談にも<br>スピーディーに対応いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORKS ===== -->
+<section class="works" id="works" hidden>
+  <div class="container">
+    <h2 class="sec-title sec-title--light">施工事例</h2>
+    <p class="sec-lead sec-lead--light">これまでに手がけた工事の一部をご紹介します。</p>
+
+    <div class="grid grid--4">
+      <a class="wcard" href="#">
+        <span class="wcard__img ph" data-ph="IMAGE">
+          <span class="wcard__tag"><svg class="is-yellow"><use href="#i-bolt"/></svg>電気設備工事</span>
+        </span>
+        <span class="wcard__body">
+          <span class="wcard__area">沖縄県那覇市</span>
+          <span class="wcard__name">商業施設の電気設備工事</span>
+          <span class="arrow-circle arrow-circle--dark"><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+      <a class="wcard" href="#">
+        <span class="wcard__img ph" data-ph="IMAGE">
+          <span class="wcard__tag"><svg class="is-cyan"><use href="#i-snow"/></svg>空調設備工事</span>
+        </span>
+        <span class="wcard__body">
+          <span class="wcard__area">沖縄県宜野湾市</span>
+          <span class="wcard__name">オフィスビルの空調設備工事</span>
+          <span class="arrow-circle arrow-circle--dark"><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+      <a class="wcard" href="#">
+        <span class="wcard__img ph" data-ph="IMAGE">
+          <span class="wcard__tag"><svg class="is-yellow"><use href="#i-building"/></svg>住宅向け工事</span>
+        </span>
+        <span class="wcard__body">
+          <span class="wcard__area">沖縄県うるま市</span>
+          <span class="wcard__name">戸建て住宅の電気・空調工事</span>
+          <span class="arrow-circle arrow-circle--dark"><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+      <a class="wcard" href="#">
+        <span class="wcard__img ph" data-ph="IMAGE">
+          <span class="wcard__tag"><svg class="is-yellow"><use href="#i-home"/></svg>法人・店舗向け</span>
+        </span>
+        <span class="wcard__body">
+          <span class="wcard__area">沖縄県浦添市</span>
+          <span class="wcard__name">飲食店の電気設備工事</span>
+          <span class="arrow-circle arrow-circle--dark"><svg><use href="#i-arrow"/></svg></span>
+        </span>
+      </a>
+    </div>
+
+    <div class="works__more">
+      <a class="btn btn--outline" href="#">施工事例をもっと見る <svg class="btn__chev"><use href="#i-chev"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWS ===== -->
+<section class="news" id="news" hidden>
+  <div class="container">
+    <h2 class="sec-title">新着情報</h2>
+
+    <div class="news__layout">
+      <div class="news__visual ph" data-ph="IMAGE"></div>
+
+      <div class="news__main">
+        <p class="news__lead">お知らせや施工事例などの最新情報をお届けします。</p>
+
+        <ul class="nlist">
+          <li><a href="#">
+            <time>2025.05.20</time>
+            <span class="badge badge--green">お知らせ</span>
+            <span class="nlist__title">ホームページをリニューアルしました</span>
+            <svg class="nlist__arrow"><use href="#i-arrow"/></svg>
+          </a></li>
+          <li><a href="#">
+            <time>2025.05.10</time>
+            <span class="badge badge--blue">施工事例</span>
+            <span class="nlist__title">沖縄県那覇市の商業施設で電気設備工事を行いました</span>
+            <svg class="nlist__arrow"><use href="#i-arrow"/></svg>
+          </a></li>
+          <li><a href="#">
+            <time>2025.04.28</time>
+            <span class="badge badge--green">お知らせ</span>
+            <span class="nlist__title">夏季休業のお知らせ（8月13日〜8月15日）</span>
+            <svg class="nlist__arrow"><use href="#i-arrow"/></svg>
+          </a></li>
+        </ul>
+
+        <div class="news__more">
+          <a class="btn btn--outline btn--outline-dark" href="#">新着情報一覧を見る <svg class="btn__chev"><use href="#i-chev"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta" id="contact" hidden>
+  <div class="cta__media ph" data-ph="BACKGROUND IMAGE"></div>
+  <div class="cta__scrim"></div>
+  <div class="container cta__inner">
+    <div class="cta__copy">
+      <h2 class="cta__title">電気・空調のことなら<br>沖空電にお任せください。</h2>
+      <p class="cta__note">現地調査・お見積りは無料です。まずはお気軽にご相談ください。</p>
+    </div>
+    <div class="cta__btns">
+      <a class="btn btn--yellow btn--tel" href="tel:0989889953">
+        <svg class="btn__ico"><use href="#i-phone"/></svg>
+        <span><strong>098-988-9953</strong><small>受付時間 8:00〜17:00</small></span>
+      </a>
+      <a class="btn btn--ghost btn--mail" href="#"><svg class="btn__ico"><use href="#i-mail"/></svg> メールでのお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="company" hidden>
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <div class="logo logo--hero">
+        <img class="logo__mark" src="okinawa_web_assets/Logo-light.png" alt="OKD" width="2172" height="724">
+        <span class="logo__text"><small>株式会社</small> 沖空電</span>
+      </div>
+      <ul class="footer__info">
+        <li><svg><use href="#i-mappin-s"/></svg>〒901-2224 沖縄県宜野湾市真志喜1-12-3</li>
+        <li><svg><use href="#i-phone"/></svg>098-988-9953</li>
+        <li><svg><use href="#i-clock"/></svg>受付時間 8:00〜17:00（平日）</li>
+      </ul>
+    </div>
+
+    <nav class="footer__nav">
+      <div class="fcol">
+        <h3>サービス</h3>
+        <ul>
+          <li><a href="#">電気設備工事</a></li>
+          <li><a href="#">空調設備工事</a></li>
+          <li><a href="#">法人・店舗向け</a></li>
+          <li><a href="#">住宅向け工事</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h3>施工事例</h3>
+        <ul>
+          <li><a href="#">施工事例一覧</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h3>選ばれる理由</h3>
+        <ul>
+          <li><a href="#">地域密着の対応</a></li>
+          <li><a href="#">確かな技術と安全</a></li>
+          <li><a href="#">迅速・柔軟な対応</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h3>会社案内</h3>
+        <ul>
+          <li><a href="#">会社概要</a></li>
+          <li><a href="#">採用情報</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h3>お問合せ</h3>
+        <ul>
+          <li><a href="#">お問合せフォーム</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <small class="copy">© 2025 株式会社 沖空電 All Rights Reserved.</small>
+      <ul class="footer__sub">
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">サイトマップ</a></li>
+      </ul>
+      <a class="totop" href="#" aria-label="ページ上部へ"><svg><use href="#i-up"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
